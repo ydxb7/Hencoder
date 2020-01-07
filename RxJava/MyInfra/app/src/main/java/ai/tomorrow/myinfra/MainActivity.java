@@ -5,7 +5,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import ai.tomorrow.myrxjava.MyDisposable;
 import ai.tomorrow.myrxjava.MySingle;
+import ai.tomorrow.myrxjava.MySingleObserver;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
@@ -24,10 +26,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setup() {
-        Single.just("1")
-                .subscribe(new SingleObserver<String>() {
+//        Single.just("1")
+//                .subscribe(new SingleObserver<String>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(String s) {
+//                        textView.setText(s);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//                });
+
+        MySingle.just("1")
+                .subscribe(new MySingleObserver<String>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(MyDisposable disposable) {
 
                     }
 
@@ -41,7 +61,5 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
-        MySingle mySingle = new MySingle();
     }
 }
