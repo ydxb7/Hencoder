@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import ai.tomorrow.myrxjava.MySingle;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
@@ -40,5 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
+        MySingle mySingle = new MySingle();
     }
 }
