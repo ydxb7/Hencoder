@@ -1,6 +1,6 @@
 package ai.tomorrow.myrxjava;
 
-public abstract class MySingle<T> {
+public abstract class MySingle<T> implements MySingleSource<T>{
     public static <T> MySingle<T> just(final T item){
         return new MySingleJust<>(item);
     }
@@ -10,4 +10,8 @@ public abstract class MySingle<T> {
     }
 
     protected abstract void subscribeActual(MySingleObserver<? super T> observer); // todo super
+
+    public final <R> MySingle<R> map(MyFunction<? super T, ? extends R> mapper){
+        return new MySingleMap<T, R>(this, mapper);
+    }
 }

@@ -6,11 +6,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ai.tomorrow.myrxjava.MyDisposable;
+import ai.tomorrow.myrxjava.MyFunction;
 import ai.tomorrow.myrxjava.MySingle;
 import ai.tomorrow.myrxjava.MySingleObserver;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setup() {
-//        Single.just("1")
+//        Single.just(1)
+//                .map(new Function<Integer, String>() {
+//                    @Override
+//                    public String apply(Integer integer) throws Exception {
+//                        return String.valueOf(integer);
+//                    }
+//                })
 //                .subscribe(new SingleObserver<String>() {
 //                    @Override
 //                    public void onSubscribe(Disposable d) {
@@ -44,7 +52,13 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                });
 
-        MySingle.just("1")
+        MySingle.just(1)
+                .map(new MyFunction<Integer, String>() {
+                    @Override
+                    public String apply(Integer integer) throws Exception {
+                        return String.valueOf(integer);
+                    }
+                })
                 .subscribe(new MySingleObserver<String>() {
                     @Override
                     public void onSubscribe(MyDisposable disposable) {
