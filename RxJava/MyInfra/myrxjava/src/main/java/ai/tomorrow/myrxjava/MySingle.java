@@ -14,4 +14,8 @@ public abstract class MySingle<T> implements MySingleSource<T> {
   public final <R> MySingle<R> map(MyFunction<? super T, ? extends R> mapper) {
     return new MySingleMap<T, R>(this, mapper);
   }
+
+  public static <T> MySingle<T> create(MySingleOnSubscribe<T> source){
+    return new MySingleCreate<T>(source);
+  }
 }
